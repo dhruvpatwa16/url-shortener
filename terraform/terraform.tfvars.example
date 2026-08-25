@@ -1,0 +1,3 @@
+ami_id    = "ami-xxxxxxxxxxxxxxxxx"
+key_name  = "your-key-pair-name"
+my_ip     = "your.ip.address.here/32"
