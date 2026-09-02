@@ -79,3 +79,12 @@ resource "aws_instance" "k8s_nodes" {
     Name = count.index == 0 ? "k8s-control-plane" : "k8s-worker-1"
   }
 }
+
+resource "aws_eip" "control_plane_eip" {
+  instance = aws_instance.k8s_nodes[0].id
+  domain   = "vpc"
+
+  tags = {
+    Name = "k8s-control-plane-eip"
+  }
+}
