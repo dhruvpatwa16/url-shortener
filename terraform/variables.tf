@@ -12,7 +12,7 @@ variable "ami_id" {
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
-  default     = "t3.micro"
+  default     = "t3.small"
 }
 
 variable "key_name" {
@@ -20,7 +20,7 @@ variable "key_name" {
   type        = string
 }
 
-variable "my_ip" {
-  description = "Your IP address, for SSH access (CIDR format, e.g. 1.2.3.4/32)"
-  type        = string
-}
+# variable "my_ip" {
+#   description = "Your IP address, for SSH access (CIDR format, e.g. 1.2.3.4/32)"
+#   type        = string
+# }
