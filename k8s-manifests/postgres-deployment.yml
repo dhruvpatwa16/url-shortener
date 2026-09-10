@@ -29,6 +29,8 @@ spec:
         - name: postgres-storage
           persistentVolumeClaim:
             claimName: postgres-pvc
+      nodeSelector:
+        role: app
 ---
 apiVersion: v1
 kind: Service
