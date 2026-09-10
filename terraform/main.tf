@@ -69,14 +69,14 @@ resource "aws_security_group" "app_sg" {
 }
 
 resource "aws_instance" "k8s_nodes" {
-  count = 2
+  count = 3
   ami = var.ami_id
   instance_type = var.instance_type
   key_name = var.key_name
   vpc_security_group_ids = [aws_security_group.app_sg.id]
 
   tags = {
-    Name = count.index == 0 ? "k8s-control-plane" : "k8s-worker-1"
+    Name = count.index == 0 ? "k8s-control-plane" : (count.index == 1 ? "k8s-worker-1" : "k8s-worker-2-platform")
   }
 }
 
