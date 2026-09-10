@@ -1,0 +1,11 @@
+---
+- name: Install Calico pod network
+  hosts: control_plane
+  become: true
+  become_user: ubuntu
+  tasks:
+
+    - name: Apply Calico manifest
+      command: kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/calico.yaml
+      environment:
+        KUBECONFIG: /home/ubuntu/.kube/config

@@ -1,0 +1,24 @@
+---
+- name: Join worker node to Kubernetes cluster
+  hosts: workers
+  become: true
+  tasks:
+
+    - name: Copy join command from control plane
+      fetch:
+        src: /home/ubuntu/join-command.sh
+        dest: /tmp/join-command.sh
+        flat: true
+      delegate_to: k8s-control-plane
+
+    - name: Copy join command to worker node
+      copy:
+        src: /tmp/join-command.sh
+        dest: /tmp/join-command.sh
+        mode: '0755'
+
+    - name: Run kubeadm join
+      command: sh /tmp/join-command.sh
+      register: join_result
+      args:
+        creates: /etc/kubernetes/kubelet.conf
