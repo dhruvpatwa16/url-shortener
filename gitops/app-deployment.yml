@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: url-shortener
-          image: dhruvpatwa16/url-shortener:70db19ce7e7ddc351dbbd5ca9b2f098088f1139b
+          image: dhruvpatwa16/url-shortener:81721772688b78fa9ca8112741ee10d5529d9117
           ports:
             - containerPort: 3000
           env:
