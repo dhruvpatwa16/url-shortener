@@ -80,7 +80,7 @@ resource "aws_instance" "k8s_nodes" {
   }
   
   root_block_device {
-    volume_size = count.index == 0 ? 12 : 9
+    volume_size = count.index == 0 ? 12 : (count.index == 2 ? 14 : 9)
     volume_type = "gp3"
   }
   
