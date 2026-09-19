@@ -1,0 +1,59 @@
+prometheus:
+  prometheusSpec:
+    nodeSelector:
+      role: platform
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 300m
+        memory: 512Mi
+    retention: 1d
+    storageSpec: {}
+
+grafana:
+  nodeSelector:
+    role: platform
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+  service:
+    type: NodePort
+    nodePort: 30090
+  persistence:
+    enabled: false
+  livenessProbe:
+    initialDelaySeconds: 90
+    timeoutSeconds: 10
+    periodSeconds: 30
+    failureThreshold: 6
+  readinessProbe:
+    initialDelaySeconds: 90
+    timeoutSeconds: 10
+    periodSeconds: 30
+    failureThreshold: 6
+
+alertmanager:
+  enabled: false
+
+nodeExporter:
+  enabled: true
+
+kubeStateMetrics:
+  enabled: true
+
+prometheusOperator:
+  nodeSelector:
+    role: platform
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
